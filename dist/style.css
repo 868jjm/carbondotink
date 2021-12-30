@@ -1,0 +1,192 @@
+body { 
+    margin: 0; 
+    height: 100vh;
+}
+  
+canvas { 
+    display: block;
+}
+
+h1 {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    font-family: 'Montserrat';
+    font-size: 7em;
+    text-transform: uppercase;
+    width: auto;
+    line-height: .8em;
+    border: 5px solid black;
+    padding: .2em;
+  }
+  .steven {
+    font-family: "Andale Mono", "AndaleMono", Andale-Mono, AndaleMono, monospace;
+    font-size: 0.8em;
+    color: #030303;
+    z-index: 565656;
+    top: 4em;
+    right: 4em;
+    position: fixed;
+    display: inline-block;
+    letter-spacing: 0.1em;
+  }
+  
+  .steven {
+    font-size: 75%;
+    word-spacing: -41px;
+    right: auto;
+    top: 85px;
+    right: 85px;
+    text-align: center;
+}
+.steven > a:hover {
+    background-color: #030303;
+    color: #fff;
+  }
+  .lorettaID {
+    position: fixed !important;
+    bottom: 25px !important;
+    font-size: 10px;
+    word-spacing: -20px;
+}
+.loretta {
+    font-family: "Andale Mono", "AndaleMono", Andale-Mono, AndaleMono, monospace;
+    font-size: 0.8em;
+    color: #030303;
+    z-index: 565656;
+    bottom: 4em;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    letter-spacing: 0.1em;
+    z-index: 565656;
+    display: inline-block;
+  }
+  .loretta > center > a:hover {
+    background-color: #030303;
+    color: #fff;
+    padding-top: 2px;
+    padding-bottom:2px;
+    padding-left:7px;
+    padding-right:7px;
+  }
+
+  .line1 {
+    font-family: 'Helvetica', Helvetica;
+    font-size: 3em;
+    color: #060606;
+    font-weight: 600;
+    display: inline-block;
+  }
+  #label1 {
+    top: 32%;
+  }
+  #label1 {
+    left:21%;
+    top: 37%;
+    vertical-align: text-top;
+  }
+
+  .title {
+    position: fixed;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+  .line2 {
+    font-family: 'Helvetica', Helvetica;
+    font-size: 4em;
+    color: #060606;
+    font-weight: 600;
+    display: inline-block;
+  }
+  #label2 {
+    top: 32%;
+  }
+  #label2 {
+    left:6%;
+    top: 1%;
+    vertical-align: text-top;
+  }
+
+  .title1 {
+    position: fixed;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .glenn {
+    font-family: "Helvetica-Neue-Bold", "Helvetica Neue Bold", "HelveticaNeueBold", Helvetica-Neue, HelveticaNeue, "Helvetica", Helvetica, "Arial", Arial, sans-serif;
+    font-weight: 600;
+    position: fixed;
+    font-size: 2em;
+    color: #030303;
+    z-index: 565656;
+    top: 1em;
+    left: 32em;
+    display: inline-block;
+  }
+  
+  .glenn {
+          width: 100px;
+          display: block;
+          left: 78%;
+          margin-left: -50px;
+          top: 10%;
+      }
+  
+  .glenn-img2 img {
+    width: 15%;
+    height: auto;
+  }
+  
+  .glenn-img2 {
+          width: 200%;
+      }
+
+black-line {
+        width: 10%;
+        height: 0.2%;
+        top: 30%;
+    }
+
+     .black-line{
+    height: 2px;
+  }
+  .black-line {
+    position: fixed;
+    left: 21%;
+    top: 55%;
+    height: 1%;
+    width: 250px;
+    background-color: #060606;
+  } 
+  .social-links {
+    margin: 2em;
+    padding-top: 2px;
+    padding-bottom:2px;
+    padding-left:7px;
+    padding-right:7px;
+  }
+  .nav-links {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+  .nav-links {
+    margin: 9em;
+    padding-top: 2px;
+    padding-bottom:2px;
+    padding-left:7px;
+    padding-right:7px;
+  }
+  
+.a-link {
+	color:  black;
+	text-decoration: none;
+}
+.a-link:hover {
+	color: white;
+	background-color: black;
+}
+.a-link:visited {
+	color: black;
+}
