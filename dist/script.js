@@ -22,8 +22,13 @@
         var geometry = new THREE.BoxGeometry(100, 100, 100);
         var material = new THREE.MeshLambertMaterial({color: 0x000000});
         var mesh = new THREE.Mesh(geometry, material);
-
+        mesh.userData = { URL: "http://stackoverflow.com"};    
         scene.add(mesh);
+        var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+        var intersects = raycaster.intersectObjects(objects);
+        if (intersects.length > 0) {
+            window.open(intersects[0].object.userData.URL);
+        }
 
        
 
@@ -147,10 +152,8 @@
 
 
         function onClick(linkToBeOpen) {
-            console.log(linkToBeOpen)
-
-            
-            TweenMax.to(camera.position, 3, {z:10, ease:Sine.easeInOut, onComplete: function (){
+            console.log(linkToBeOpen)            
+            TweenMax.to(camera.position, 3, {z:100, ease:Sine.easeInOut, onComplete: function (){
 				open(linkToBeOpen)
 			}});
            
@@ -159,7 +162,7 @@
 		//Seperate Function to load links inside the page
 		function loadSameLink(linkToBeOpen) {
             console.log(linkToBeOpen)
-            TweenMax.to(camera.position, 3, {z:10, ease:Sine.easeInOut, onComplete: function (){
+            TweenMax.to(camera.position, 3, {z:100, ease:Sine.easeInOut, onComplete: function (){
 				window.location.href = linkToBeOpen
 			}});
 		}
