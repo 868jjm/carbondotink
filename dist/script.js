@@ -24,11 +24,7 @@
         var mesh = new THREE.Mesh(geometry, material);
         mesh.userData = { URL: "http://stackoverflow.com"};    
         scene.add(mesh);
-        var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
-        var intersects = raycaster.intersectObjects(objects);
-        if (intersects.length > 0) {
-            window.open(intersects[0].object.userData.URL);
-        }
+
 
        
 
