@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
+
 	<meta charset="UTF-8">
 	<title>carbondotink</title>
-
 	<link rel="icon" href="C:/Users/juerg/Documents/GitHub/FE111/images/favicon.ico" type="image/icon type">
 	<link rel="stylesheet" href="./style.css">
 
@@ -14,7 +15,8 @@
 </head>
 
 <body>
-
+    <!-- (B) THIS COMES FIRST -->
+    <div id="loading"></div>
 	<!-- partial:index.partial.html -->
 
 	<!-- partial -->
@@ -59,7 +61,16 @@
 			
 		</center>
 	</div>
-</body>
-<script src="./script.js"></script>
 
+<script src="./script.js"></script>
+<script>
+    window.onload = () => {
+      // JUST DEFINE EMPTY ARRAY [] IF NO CSS/JS TO LOAD
+      loader(
+        ["my.css"],
+        ["my.js", "https://cdnjs.cloudflare.com/ajax/libs/WHATEVER/"]
+      );
+    };
+    </script>
+</body>
 </html>

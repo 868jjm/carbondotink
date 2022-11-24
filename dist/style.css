@@ -1,3 +1,4 @@
+
 body { 
     margin: 0; 
     height: 100vh;
@@ -189,4 +190,16 @@ black-line {
 }
 .a-link:visited {
 	color: black;
+}
+#loading {
+  /* (A1) COVER FULL PAGE */
+  position: fixed;
+  top: 0; left: 0; z-index: 999;
+  width: 100vw; height: 100vh;
+
+  /* (A2) SPINNER IMAGE */
+  background-color: black;
+  background-image: url("C:/Users/juerg/Documents/GitHub/FE111/images/giflogo4.gif");
+  background-position: center;
+  background-repeat: no-repeat;
 }
