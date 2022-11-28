@@ -17,7 +17,7 @@
 
             camera.updateProjectionMatrix();
         })
-//test7
+
         
         var geometry = new THREE.BoxGeometry(100, 100, 100);
         var material = new THREE.MeshLambertMaterial({color: 0x000000});
@@ -37,11 +37,8 @@
         light.position.set(0,0,25);
         scene.add(light);
 
-        // add a text
-        let text1 = new THREE.Group(); // placeholder till the font loads
-        //let font = new FontFace('Baumans', 'url(https://fonts.gstatic.com/s/baumans/v10/-W_-XJj9QyTd3Qfpd_04aw.woff2)');
-        //font.load().then(font => {
-            //document.fonts.add(font);
+
+        let text1 = new THREE.Group(); 
         (function() {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
@@ -91,11 +88,8 @@
 
             renderer.render(scene, camera);
         }
-         // add a text
-         let text2 = new THREE.Group(); // placeholder till the font loads
-         //let font = new FontFace('Baumans', 'url(https://fonts.gstatic.com/s/baumans/v10/-W_-XJj9QyTd3Qfpd_04aw.woff2)');
-         //font.load().then(font => {
-             //document.fonts.add(font);
+
+         let text2 = new THREE.Group(); 
          (function() {
              const canvas = document.createElement('canvas');
              const ctx = canvas.getContext('2d');
@@ -119,12 +113,11 @@
              ctx.fillStyle = '#000000';
              ctx.font = draw_font;
              ctx.fillText(text_string, 0, text_size.y - metrics.fontBoundingBoxDescent - padding);
-             // ctx.strokeStyle = '#ffffff';
-             // ctx.strokeRect(0, 0, text_size.x, text_size.y);
+
  
              // now slap it on a plane 🛫
              text2 = new THREE.Mesh(
-                 //new THREE.PlaneGeometry(1, 1, 1, 1),
+
                  new THREE.PlaneGeometry(text_size.x * 1.0, text_size.y * 1.0, 1, 1),
                  new THREE.MeshBasicMaterial({
                      transparent: true,
@@ -165,7 +158,8 @@
 
         function loadPage(event) {
             event.preventDefault();
-            TweenMax.to(camera.position, 2, {z:12000, ease:Sine.easeInOut});
+
+            TweenMax.to(camera.position, 2, {z:12000, ease:Sine.easeInOut}).delay(2);
           
             
         }
@@ -210,7 +204,7 @@
               if (now==total) {
                 window.setTimeout(()=>{
                   document.getElementById("loading").remove();
-                }, 100);
+                }, 1500);
               }
             };
           
@@ -231,5 +225,47 @@
               document.head.appendChild(s);
             });
           }
-        render();
-               
+
+        projector = new THREE.Projector();
+        mouseVector = new THREE.Vector3();
+
+        // User interaction
+        window.addEventListener( 'click', onMouseMove, false );
+        window.addEventListener( 'resize', onWindowResize, false );
+        // And go!
+        animate();
+        
+        function onMouseMove( e ) {
+		
+            mouseVector.x = 2 * (e.clientX / containerWidth) - 1;
+            mouseVector.y = 1 - 2 * ( e.clientY / containerHeight );
+    
+            var raycaster = projector.pickingRay( mouseVector.clone(), camera ),
+                intersects = raycaster.intersectObjects( cubes.children );
+    
+
+
+                
+            for( var i = 0; i < intersects.length; i++ ) {
+                var intersection = intersects[ i ],
+                    obj = intersection.object;
+    
+                obj.material.color.setRGB( 1.0 - i / intersects.length, 0, 0 );
+                //obj.open(intersects[0].object.userData.URL);
+            }
+    
+            
+        }
+    
+        function onWindowResize( e ) {
+            containerWidth = container.clientWidth;
+            containerHeight = container.clientHeight;
+            renderer.setSize( containerWidth, containerHeight );
+            camera.aspect = containerWidth / containerHeight;
+            camera.updateProjectionMatrix();
+        }
+        function animate() {
+            requestAnimationFrame( animate );
+    
+            renderer.render( scene, camera );
+        }
