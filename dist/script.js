@@ -76,7 +76,8 @@
                 })
             );
             text1.material.map.needsUpdate = true;
-            text1.position.set(-1000, 900, 1100);
+            // text1.position.set(-1000, 900, 1100);
+            text1.position.set(0, 900, 1100);
             text1.rotateX(Math.PI);
             scene.add(text1);
             console.log(text1);
@@ -126,7 +127,8 @@
                  })
              );
              text2.material.map.needsUpdate = true;
-             text2.position.set(-2000, 2000, 10);
+            //  text2.position.set(-2000, 2000, 10);
+             text2.position.set(0, 2000, 10);
              text2.rotateX(Math.PI);
              scene.add(text2);
              console.log(text2);
