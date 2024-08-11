@@ -27,7 +27,11 @@ window.addEventListener('resize', () => {
 var geometry = new THREE.BoxGeometry(100, 100, 100);
 var material = new THREE.MeshLambertMaterial({ color: 0x000000 });
 var mesh = new THREE.Mesh(geometry, material);
+<<<<<<< HEAD
 mesh.userData = { URL: "index - Copy.html"  };
+=======
+mesh.userData = { URL: "http://stackoverflow.com" };
+>>>>>>> 98b5ff6c90399441738adfc078029c5480370e82
 scene.add(mesh);
 
 var light = new THREE.PointLight(0xFFFFFF, 1, 1000)
@@ -273,12 +277,16 @@ function onMouseClick(event) {
 
         // Optionally, perform an action, e.g., open a URL
         if (intersects[0].object.userData.URL) {
+<<<<<<< HEAD
             TweenMax.to(camera.position, 3, {
                 z: 100, ease: Sine.easeInOut, onComplete: function () {
                     // window.open(intersects[0].object.userData.URL, '_blank');
                     window.location.href = intersects[0].object.userData.URL
                 }
             });
+=======
+            window.open(intersects[0].object.userData.URL, '_blank');
+>>>>>>> 98b5ff6c90399441738adfc078029c5480370e82
         }
     }
 }
