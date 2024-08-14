@@ -27,7 +27,7 @@ window.addEventListener('resize', () => {
 var geometry = new THREE.BoxGeometry(100, 100, 100);
 var material = new THREE.MeshLambertMaterial({ color: 0x000000 });
 var mesh = new THREE.Mesh(geometry, material);
-mesh.userData = { URL: "http://stackoverflow.com" };
+mesh.userData = { URL: "index.html"  };
 scene.add(mesh);
 
 var light = new THREE.PointLight(0xFFFFFF, 1, 1000)
@@ -65,10 +65,29 @@ let text1 = new THREE.Group();
     // ctx.strokeStyle = '#ffffff';
     // ctx.strokeRect(0, 0, text_size.x, text_size.y);
 
+    // Calculate aspect ratio
+    const aspectRatio = text_size.x / text_size.y;
+
+    // Set dimensions based on screen size while maintaining aspect ratio
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    let planeWidth, planeHeight;
+
+    if (screenWidth / screenHeight > aspectRatio) {
+        // Screen is wider than the text aspect ratio
+        planeHeight = screenHeight; // Adjust this multiplier as needed
+        planeWidth = planeHeight * aspectRatio;
+    } else {
+        // Screen is taller than the text aspect ratio
+        planeWidth = screenWidth; // Adjust this multiplier as needed
+        planeHeight = planeWidth / aspectRatio;
+    }
+
     // now slap it on a plane 🛫
     text1 = new THREE.Mesh(
         //new THREE.PlaneGeometry(1, 1, 1, 1),
-        new THREE.PlaneGeometry(text_size.x * 1.0, text_size.y * 1.0, 1, 1),
+        new THREE.PlaneGeometry(planeWidth,planeHeight, 1, 1),
+        // new THREE.PlaneGeometry(text_size.x * 1.0, text_size.y * 1.0, 1, 1),
         new THREE.MeshBasicMaterial({
             transparent: true,
             map: new THREE.Texture(canvas),
@@ -127,11 +146,29 @@ let text2 = new THREE.Group();
     ctx.font = draw_font;
     ctx.fillText(text_string, 0, text_size.y - metrics.fontBoundingBoxDescent - padding);
 
+    // Calculate aspect ratio
+    const aspectRatio = text_size.x / text_size.y;
+
+    // Set dimensions based on screen size while maintaining aspect ratio
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    let planeWidth, planeHeight;
+
+    if (screenWidth / screenHeight > aspectRatio) {
+        // Screen is wider than the text aspect ratio
+        planeHeight = screenHeight; // Adjust this multiplier as needed
+        planeWidth = planeHeight * aspectRatio;
+    } else {
+        // Screen is taller than the text aspect ratio
+        planeWidth = screenWidth; // Adjust this multiplier as needed
+        planeHeight = planeWidth / aspectRatio;
+    }
 
     // now slap it on a plane 🛫
     text2 = new THREE.Mesh(
 
-        new THREE.PlaneGeometry(text_size.x * 1.0, text_size.y * 1.0, 1, 1),
+        new THREE.PlaneGeometry(planeWidth, planeHeight, 1, 1),
+        // new THREE.PlaneGeometry(text_size.x * 1.0, text_size.y * 1.0, 1, 1),
         new THREE.MeshBasicMaterial({
             transparent: true,
             map: new THREE.Texture(canvas),
@@ -273,7 +310,12 @@ function onMouseClick(event) {
 
         // Optionally, perform an action, e.g., open a URL
         if (intersects[0].object.userData.URL) {
-            window.open(intersects[0].object.userData.URL, '_blank');
+            TweenMax.to(camera.position, 3, {
+                z: 100, ease: Sine.easeInOut, onComplete: function () {
+                    // window.open(intersects[0].object.userData.URL, '_blank');
+                    window.location.href = intersects[0].object.userData.URL
+                }
+            });
         }
     }
 }
